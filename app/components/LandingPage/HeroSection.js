@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -15,73 +16,69 @@ export default function HeroSection() {
     "Life-Changing Read",
   ];
 
-  // Register ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    // Text rotator animation
     let currentIndex = 0;
+    let textElement = textRotatorRef.current;
 
     const animateText = () => {
-      const textElement = textRotatorRef.current;
       if (!textElement) return;
 
       gsap.to(textElement, {
         opacity: 0,
         y: 30,
-        duration: 1.2, // Increased duration for smoother fade-out
-        ease: "power3.inOut", // Smoother easing
+        duration: 1.2,
+        ease: "power3.inOut",
         onComplete: () => {
           currentIndex = (currentIndex + 1) % texts.length;
           textElement.textContent = texts[currentIndex];
           gsap.to(textElement, {
             opacity: 1,
             y: 0,
-            duration: 1.2, // Increased duration for smoother fade-in
-            ease: "power3.inOut", // Smoother easing
+            duration: 1.2,
+            ease: "power3.inOut",
           });
         },
       });
     };
 
-    const interval = setInterval(animateText, 4000); // Increased interval for longer display
+    const interval = setInterval(animateText, 4000);
 
-    // Book stack animation
     if (bookStackRef.current) {
       const books = bookStackRef.current.querySelectorAll(".book");
 
       gsap.from(books, {
-        y: 80, // Increased initial offset for more dramatic entrance
+        y: 80,
         opacity: 0,
-        stagger: 0.2, // Slightly increased stagger for better pacing
-        duration: 1.2, // Longer duration for smoother entrance
-        ease: "back.out(1.4)", // More pronounced bounce effect
+        stagger: 0.2,
+        duration: 1.2,
+        ease: "back.out(1.4)",
         scrollTrigger: {
           trigger: heroRef.current,
-          start: "top 80%", // Start animation earlier for better visibility
+          start: "top 80%",
           toggleActions: "play none none none",
         },
       });
 
-      // Continuous subtle animation with increased intensity
       gsap.to(books[0], {
-        y: -15, // Increased vertical movement
+        y: -15,
         duration: 3.5,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
       gsap.to(books[1], {
-        rotation: -8, // Increased rotation for more noticeable effect
-        y: -10, // Added slight vertical movement
+        rotation: -8,
+        y: -10,
         duration: 4.5,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
       gsap.to(books[2], {
-        rotation: 6, // Increased rotation
-        y: -8, // Added slight vertical movement
+        rotation: 6,
+        y: -8,
         duration: 4,
         repeat: -1,
         yoyo: true,
@@ -159,10 +156,9 @@ export default function HeroSection() {
             ref={bookStackRef}
             className="order-1 lg:order-2 relative h-[400px] lg:h-[500px] flex items-center justify-center"
           >
-            {/* Book Stack */}
             <div className="relative w-full max-w-md h-full">
-              {/* Book 3 (Back) */}
-              <div className="book absolute bottom-40 left-1/2 w-48 h-64 bg-white rounded-lg shadow-lg border border-gray-100 overflow-bidden rotate-2 origin-bottom">
+              {/* Book 3 */}
+              <div className="book absolute bottom-40 left-1/2 w-48 h-64 bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden rotate-2 origin-bottom">
                 <div className="h-full bg-gradient-to-br from-green-50 to-emerald-50 p-4 flex flex-col">
                   <div className="h-4 bg-emerald-200 rounded-full mb-3"></div>
                   <div className="h-4 bg-emerald-200 rounded-full w-3/4 mb-3"></div>
@@ -175,7 +171,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Book 2 (Middle) */}
+              {/* Book 2 */}
               <div className="book absolute bottom-48 left-1/2 w-48 h-64 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden -rotate-3 origin-bottom">
                 <div className="h-full bg-gradient-to-br from-yellow-50 to-amber-50 p-4 flex flex-col">
                   <div className="h-4 bg-amber-200 rounded-full mb-3"></div>
@@ -189,7 +185,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Book 1 (Front) */}
+              {/* Book 1 */}
               <div className="book absolute bottom-56 left-1/2 w-48 h-64 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden origin-bottom">
                 <div className="h-full bg-gradient-to-br from-blue-50 to-indigo-50 p-4 flex flex-col">
                   <div className="h-4 bg-indigo-200 rounded-full mb-3"></div>
@@ -207,7 +203,7 @@ export default function HeroSection() {
               </div>
 
               {/* Reading Stats */}
-              <div className="absolute left-0 top-1/2 transform translate-y-1/2 bg-white p-4 rounded-xl shadow-lg border border-gray-100 z-10">
+              <div className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-xl shadow-lg border border-gray-100 z-10">
                 <div className="text-sm font-medium text-gray-700 mb-2">
                   Your progress
                 </div>
@@ -222,11 +218,11 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Decorative Elements */}
+              {/* Decorative Blobs */}
               <div className="absolute -top-8 -right-8 bg-indigo-100 w-32 h-32 rounded-full opacity-80 filter blur-lg"></div>
               <div className="absolute bottom-0 -left-8 bg-yellow-100 w-24 h-24 rounded-full opacity-80 filter blur-lg"></div>
 
-              {/* Floating Book Icons */}
+              {/* Floating Icons */}
               <div className="absolute top-8 left-8 animate-float">
                 <svg
                   className="w-12 h-12 text-indigo-300"
@@ -236,10 +232,7 @@ export default function HeroSection() {
                   <path d="M18 2h-6a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2zM4 2H2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2z" />
                 </svg>
               </div>
-              <div
-                className
-                performans="absolute bottom-8 right-8 animate-float-delay"
-              >
+              <div className="absolute bottom-8 right-8 animate-float-delay">
                 <svg
                   className="w-10 h-10 text-amber-300"
                   fill="currentColor"
@@ -255,28 +248,26 @@ export default function HeroSection() {
 
       <style jsx global>{`
         @keyframes float {
-          0%,
-          100% {
+          0%, 100% {
             transform: translateY(0) rotate(0deg);
           }
           50% {
-            transform: translateY(-15px) rotate(5deg); /* Increased float height and rotation */
+            transform: translateY(-15px) rotate(5deg);
           }
         }
         @keyframes floatDelay {
-          0%,
-          100% {
+          0%, 100% {
             transform: translateY(0) rotate(0deg);
           }
           50% {
-            transform: translateY(-12px) rotate(-4deg); /* Increased float height and rotation */
+            transform: translateY(-12px) rotate(-4deg);
           }
         }
         .animate-float {
-          animation: float 5s ease-in-out infinite; /* Slightly faster for more dynamic feel */
+          animation: float 5s ease-in-out infinite;
         }
         .animate-float-delay {
-          animation: floatDelay 4.5s ease-in-out 1s infinite; /* Slightly faster */
+          animation: floatDelay 4.5s ease-in-out 1s infinite;
         }
       `}</style>
     </section>
