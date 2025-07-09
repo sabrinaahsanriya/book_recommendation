@@ -5,16 +5,18 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
+// Move texts outside the component to avoid dependency warning
+const texts = [
+  "Favorite Book",
+  "Best Seller",
+  "Hidden Gem",
+  "Life-Changing Read",
+];
+
 export default function HeroSection() {
   const heroRef = useRef(null);
   const bookStackRef = useRef(null);
   const textRotatorRef = useRef(null);
-  const texts = [
-    "Favorite Book",
-    "Best Seller",
-    "Hidden Gem",
-    "Life-Changing Read",
-  ];
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -122,7 +124,8 @@ export default function HeroSection() {
                 href="/register"
                 className="relative text-xl overflow-hidden group bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
               >
-                <span className="relative z-10">Get Started - It's Free</span>
+                {/* Escaped apostrophe */}
+                <span className="relative z-10">Get Started - It&apos;s Free</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></span>
               </Link>
               <Link
@@ -156,8 +159,9 @@ export default function HeroSection() {
             ref={bookStackRef}
             className="order-1 lg:order-2 relative h-[400px] lg:h-[500px] flex items-center justify-center"
           >
+            {/* Book Stack */}
             <div className="relative w-full max-w-md h-full">
-              {/* Book 3 */}
+              {/* Book 3 (Back) */}
               <div className="book absolute bottom-40 left-1/2 w-48 h-64 bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden rotate-2 origin-bottom">
                 <div className="h-full bg-gradient-to-br from-green-50 to-emerald-50 p-4 flex flex-col">
                   <div className="h-4 bg-emerald-200 rounded-full mb-3"></div>
@@ -171,7 +175,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Book 2 */}
+              {/* Book 2 (Middle) */}
               <div className="book absolute bottom-48 left-1/2 w-48 h-64 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden -rotate-3 origin-bottom">
                 <div className="h-full bg-gradient-to-br from-yellow-50 to-amber-50 p-4 flex flex-col">
                   <div className="h-4 bg-amber-200 rounded-full mb-3"></div>
@@ -185,7 +189,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Book 1 */}
+              {/* Book 1 (Front) */}
               <div className="book absolute bottom-56 left-1/2 w-48 h-64 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden origin-bottom">
                 <div className="h-full bg-gradient-to-br from-blue-50 to-indigo-50 p-4 flex flex-col">
                   <div className="h-4 bg-indigo-200 rounded-full mb-3"></div>
@@ -213,16 +217,14 @@ export default function HeroSection() {
                     style={{ width: "75%" }}
                   ></div>
                 </div>
-                <div className="text-xs text-gray-500">
-                  12 of 16 books this year
-                </div>
+                <div className="text-xs text-gray-500">12 of 16 books this year</div>
               </div>
 
-              {/* Decorative Blobs */}
+              {/* Decorative Elements */}
               <div className="absolute -top-8 -right-8 bg-indigo-100 w-32 h-32 rounded-full opacity-80 filter blur-lg"></div>
               <div className="absolute bottom-0 -left-8 bg-yellow-100 w-24 h-24 rounded-full opacity-80 filter blur-lg"></div>
 
-              {/* Floating Icons */}
+              {/* Floating Book Icons */}
               <div className="absolute top-8 left-8 animate-float">
                 <svg
                   className="w-12 h-12 text-indigo-300"
@@ -248,7 +250,8 @@ export default function HeroSection() {
 
       <style jsx global>{`
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0) rotate(0deg);
           }
           50% {
@@ -256,7 +259,8 @@ export default function HeroSection() {
           }
         }
         @keyframes floatDelay {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0) rotate(0deg);
           }
           50% {
