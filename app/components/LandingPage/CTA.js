@@ -112,7 +112,7 @@ export default function CTA() {
                 href="/register"
                 className="relative text-xl overflow-hidden group bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
               >
-                <span className="relative z-10">Get Started - It's Free</span>
+                <span className="relative z-10">Get Started - It&apos;s Free</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></span>
               </Link>
             </div>
