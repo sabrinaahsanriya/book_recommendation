@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -11,7 +12,9 @@ export default function TrustIndicators() {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    // Section animation
+    if (!sectionRef.current || !contentRef.current) return;
+
+    // Animate section title and description
     gsap.from(contentRef.current, {
       opacity: 0,
       y: 40,
@@ -24,8 +27,10 @@ export default function TrustIndicators() {
       },
     });
 
-    // Logo animations
+    // Animate each logo
     logoRefs.current.forEach((logo, index) => {
+      if (!logo) return;
+
       gsap.fromTo(
         logo,
         { opacity: 0, y: 30, scale: 0.9 },
@@ -44,7 +49,7 @@ export default function TrustIndicators() {
         }
       );
 
-      logo.addEventListener("mouseenter", () => {
+      const handleEnter = () => {
         gsap.to(logo, {
           opacity: 1,
           scale: 1.1,
@@ -52,9 +57,9 @@ export default function TrustIndicators() {
           duration: 0.3,
           ease: "power2.out",
         });
-      });
+      };
 
-      logo.addEventListener("mouseleave", () => {
+      const handleLeave = () => {
         gsap.to(logo, {
           opacity: 0.9,
           scale: 1,
@@ -62,17 +67,17 @@ export default function TrustIndicators() {
           duration: 0.3,
           ease: "power2.out",
         });
-      });
-    });
+      };
 
-    return () => {
-      logoRefs.current.forEach((logo) => {
-        if (logo) {
-          logo.removeEventListener("mouseenter", () => {});
-          logo.removeEventListener("mouseleave", () => {});
-        }
-      });
-    };
+      logo.addEventListener("mouseenter", handleEnter);
+      logo.addEventListener("mouseleave", handleLeave);
+
+      // Clean up
+      return () => {
+        logo.removeEventListener("mouseenter", handleEnter);
+        logo.removeEventListener("mouseleave", handleLeave);
+      };
+    });
   }, []);
 
   return (
@@ -80,19 +85,19 @@ export default function TrustIndicators() {
       ref={sectionRef}
       className="py-16 md:py-24 bg-gradient-to-b from-white to-indigo-50/30 relative overflow-hidden"
     >
-      {/* Decorative elements */}
+      {/* Background blobs */}
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-indigo-100 rounded-full opacity-20 filter blur-3xl -translate-y-1/3"></div>
       <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100 rounded-full opacity-20 filter blur-3xl translate-y-1/3"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div ref={contentRef} className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Trusted by Readers & Publishers{" "}
+            Trusted by Readers &amp; Publishers{" "}
             <span className="text-indigo-600">Worldwide</span>
           </h2>
           <p className="text-lg text-gray-600">
             Join thousands of book lovers and industry leaders who rely on our
-            platform for their reading journey
+            platform for their reading journey.
           </p>
         </div>
 
@@ -106,7 +111,8 @@ export default function TrustIndicators() {
             },
             {
               name: "ReadWell",
-              icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+              icon:
+                "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
               stat: "500K+ Reviews",
               color: "text-purple-600",
             },
@@ -156,7 +162,7 @@ export default function TrustIndicators() {
           ))}
         </div>
 
-        {/* Testimonial */}
+        {/* Testimonial block */}
         <div className="mt-16 max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-100">
           <div className="flex items-center mb-4">
             <div className="flex -space-x-2 mr-4">
@@ -177,10 +183,10 @@ export default function TrustIndicators() {
             </div>
           </div>
           <blockquote className="text-gray-700 italic">
-            "Our book club has found more quality recommendations through this
-            platform than anywhere else. The personalized suggestions and
+            &quot;Our book club has found more quality recommendations through
+            this platform than anywhere else. The personalized suggestions and
             community features have transformed how we discover and discuss
-            books."
+            books.&quot;
           </blockquote>
           <div className="mt-4 flex items-center">
             <div className="flex items-center text-amber-400">
