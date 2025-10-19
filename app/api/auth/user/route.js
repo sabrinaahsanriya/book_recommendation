@@ -1,3 +1,4 @@
+// app/api/auth/user/route.js
 import dbConnect from "@/lib/mongodb";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
@@ -6,8 +7,8 @@ export async function GET() {
   await dbConnect();
 
   try {
-    // Get all users (excluding passwords)
-    const users = await User.find({}, "-password"); // exclude password field
+    // Get all users (excluding passwords and follower/following arrays for list view)
+    const users = await User.find({}, "-password -followers -following");
 
     return NextResponse.json(
       { message: "Users fetched successfully", users },

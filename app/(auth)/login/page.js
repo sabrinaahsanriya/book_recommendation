@@ -1,5 +1,6 @@
-import LoginForm from "@/app/components/Auth/LoginForm";
-import PublicRoute from "@/app/components/context.js/PublicRoute";
+import LoginForm from "@/components/Auth/LoginForm";
+import PublicRoute from "@/components/context.js/PublicRoute";
+import Navbar from "@/components/LandingPage/Navbar";
 
 // This is a Server Component by default
 export default function LoginPage() {

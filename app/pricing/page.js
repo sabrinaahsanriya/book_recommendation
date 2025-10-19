@@ -1,7 +1,7 @@
 "use client";
 
-import PublicRoute from "../components/context.js/PublicRoute";
-import Navbar from "../components/LandingPage/Navbar";
+import PublicRoute from "../../components/context.js/PublicRoute";
+import Navbar from "../../components/LandingPage/Navbar";
 import Link from "next/link";
 import { HiOutlineClock } from "react-icons/hi";
 
@@ -21,7 +21,7 @@ const PricingPage = () => {
           </h1>
 
           <p className="text-gray-600 text-base md:text-lg mb-6">
-            We&apos;re crafting flexible, reader-first pricing plans for everyone —
+            We're crafting flexible, reader-first pricing plans for everyone —
             from casual readers to book clubs and publishers.
           </p>
 

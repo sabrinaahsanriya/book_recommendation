@@ -1,7 +1,7 @@
 "use client";
 
-import PublicRoute from "../components/context.js/PublicRoute";
-import Navbar from "../components/LandingPage/Navbar";
+import PublicRoute from "../../components/context.js/PublicRoute";
+import Navbar from "../../components/LandingPage/Navbar";
 import Link from "next/link";
 
 const About = () => {
@@ -37,8 +37,8 @@ const About = () => {
                 Build Your Library
               </h3>
               <p className="text-gray-700">
-                Create custom reading lists like &quot;Want to Read&quot;, &quot;Favorites&quot;, or
-                &quot;Book Club Picks&quot; and keep track of your progress with ease.
+                Create custom reading lists like "Want to Read", "Favorites", or
+                "Book Club Picks" and keep track of your progress with ease.
               </p>
             </div>
 
@@ -58,7 +58,7 @@ const About = () => {
                 For Publishers Too
               </h3>
               <p className="text-gray-700">
-                Inkspire isn&apos;t just for readers — it&apos;s a space for publishers to
+                Inkspire isn't just for readers — it's a space for publishers to
                 reach engaged audiences and gather feedback in meaningful ways.
               </p>
             </div>
