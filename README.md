@@ -105,4 +105,4 @@ BookWise is a full-stack Next.js application that allows users to discover books
 
 ## Live Demo
 
-🔗 Live Link: https://book-recommendation-dun.vercel.app
+🔗 Live Link: https://book-recommendation-lilac.vercel.app
