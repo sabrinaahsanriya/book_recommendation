@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BookWise - Online Book Community Platform
+
+BookWise is a full-stack Next.js application that allows users to discover books, manage reading lists, share reviews, follow friends, and receive personalized recommendations.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (version 18 or later recommended)
+- A package manager: npm, yarn, pnpm, or bun
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Setup and Run the Project Locally
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Clone the repository**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone https://github.com/somykoron-it/book_recommendation.git
+   cd book_recommendation
+   ```
 
-## Learn More
+2. **Install dependencies**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   yarn install
 
-## Deploy on Vercel
+   pnpm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Install dependencies**
+
+    ```bash
+
+    MONGODB_URI=
+
+    NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+    JWT_SECRET=
+
+    ```
+
+3. **Run Project**
+
+    ```bash
+
+    npm run dev
+
+    yarn dev
+
+    pnpm dev
+
+    ```
+
+
+### Open http://localhost:3000 in your browser.The app will automatically reload when you make changes to the code.
+
+## Features
+
+### User Management
+
+- Registration & Login – Secure user signup and login (supports email/password and OAuth providers like Google)
+
+- Profile Update – Users can edit their profile, upload avatar, bio, favorite genres, and reading preferences
+
+### Book Discovery
+
+- Search – Full-text search for books by title, author, ISBN, or keywords
+
+- Filter & Browse – Filter by genre, publication year, language, popularity; browse trending, new releases, and genre-specific lists
+
+### Recommendation Engine
+
+- Content-Based Filtering – Personalized book recommendations based on user's reading history, ratings, and favorite genres
+
+### Community Feedback
+
+- Reviews and Ratings – Users can write detailed reviews and rate books on a 5-star scale
+
+- Reviews are displayed on book pages with sorting options (most recent, most helpful)
+
+### Reading List Management
+
+- Want to Read, Currently Reading, Finished – Dedicated shelves for organizing personal reading progress
+
+- Easy drag-and-drop or button-based updates between lists
+
+### Social Features
+
+- Follow Other Users – Build a network by following friends or interesting readers
+
+- Activity Feed – See what your followed users are reading, rating, reviewing, or adding to their lists
+
+### Notifications
+
+- Real-time or email notifications for:
+
+- Friend activities (new reviews, finished books, etc.)
+
+- New personalized recommendations
+
+- Follow requests and interactions
+
+## Live Demo
+
+🔗 Live Link: https://book-recommendation-dun.vercel.app
